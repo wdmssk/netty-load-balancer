@@ -71,11 +71,7 @@ Development tests were conducted running multiple instances of netcat started fr
 To start a netcat client, run:
 
 ````bash
-nc <load-balancer-ip-address> <port>
-````
-e.g.:
-````bash
-nc localhost 8080
+nc <load-balancer-ip-address> <load-balancer-port>
 ````
 
 After connecting to the load balancer, enter messages and press ENTER.
