@@ -1,0 +1,6 @@
+localPort: 8080
+backendServers:
+  - hostname: localhost
+    port: 4040
+  - hostname: localhost
+    port: 4041

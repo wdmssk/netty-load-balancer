@@ -1,0 +1,35 @@
+Configuration:
+  status: warn
+  properties:
+    property:
+      - name: "DefaultPattern"
+        value: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+      - name: logPath
+        value: logs
+      - name: logFile
+        value: netty-load-balancer.log
+  Appenders:
+    Console:
+      name: Console-Appender
+      PatternLayout:
+        Pattern: ${DefaultPattern}
+      target: SYSTEM_OUT
+    RollingFile:
+      name: RollingFile-Appender
+      PatternLayout:
+        pattern: ${DefaultPattern}
+      fileName: ${logPath}/${logFile}
+      filePattern: ${logPath}/${logFile}.%d{MM-dd-yy-HH-mm-ss}-%i.gz
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: 10 KB
+      DefaultRolloverStrategy:
+        max: '30'
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        - ref: Console-Appender
+          level: debug
+        - ref: RollingFile-Appender
+          level: debug
