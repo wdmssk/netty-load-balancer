@@ -89,7 +89,7 @@ When a new inbound channel is created, the correspondent outbound channel is ins
 Netty allocates new inbound channels to EventLoop's in a round-robin way, so this results in round-robin distribution of inbound channels to the backend servers.
 
 In this approach, the outbound and inboud channels for a client/backend connection use the same EventLoop (thread).
-This means that the same EventLoop (thread) handles all the events and tasks related to a backend connection.
+This means that all the events and tasks related to a backend are handled by the same EventLoop (thread).
 
 The achitectue of this initial development is simplistic, and needs to be improved.
 One clear flaw is that it doesn't scale to handle a large number of backend servers.
