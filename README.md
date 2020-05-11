@@ -81,15 +81,15 @@ If the load balancer is working as expected, the client terminal will display th
 ### 5. Architecture
 
 The load balancer uses the round-robin algorithm to distribute incoming channels to backend servers.
-Currently, this is implemented "using" the logic in Netty EventLoopGroup used to allocate EventLoop's to the newly created channels.
+Currently, this is implemented "using" the Netty EventLoopGroup logic that allocates EventLoop's to newly created channels.
 
 In the current implementation, one EventLoop is created associated with each backend server.
-One bootstrap instance is also created for each EventLoop and its associated backend server parameters.
-When a new inbound channel is created, the correspondent outbound channel is instantiated with the bootstrap associated with the inbound EventLoop.
+One Bootstrap instance is also created for each EventLoop and parameters of the associated backend server.
+When a new inbound channel is created, the correspondent outbound channel is instantiated with the Bootstrap associated with the inbound EventLoop.
 Netty allocates new inbound channels to EventLoop's in a round-robin way, so this results in round-robin distribution of inbound channels to the backend servers.
 
 In this approach, the outbound and inboud channels for a client/backend connection use the same EventLoop (thread).
-This means that the same EventLoop (thread) handles all the events and tasks related to a connection.
+This means that the same EventLoop (thread) handles all the events and tasks related to a backend connection.
 
 The achitectue of this initial development is simplistic, and needs to be improved.
 One clear flaw is that it doesn't scale to handle a large number of backend servers.
