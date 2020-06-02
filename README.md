@@ -13,7 +13,7 @@ The gradle [`shadowJar`](https://imperceptiblethoughts.com/shadow/) plugin is us
 
 Run the following command in the project root directory.
 ````bash
-gradle clean build
+./gradlew clean build
 ````
 
 The "fat-jar" will be created as `/build/libs/nettyLoadBalancer-<version>-all.jar`.

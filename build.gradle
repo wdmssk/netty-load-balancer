@@ -8,7 +8,7 @@ sourceCompatibility = 1.11
 group = 'io.netty.loadbalancer'
 archivesBaseName = 'nettyLoadBalancer'
 version = '1.0-SNAPSHOT'
-mainClassName = 'io.netty.loadbalancer.Main'
+mainClassName = 'io.netty.loadbalancer.App'
 
 repositories {
     mavenCentral()
@@ -22,7 +22,8 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.10.1'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
 
-    implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
+
+    implementation group: 'info.picocli', name: 'picocli', version: '4.3.2'
     implementation group: 'org.yaml', name: 'snakeyaml', version: '1.26'
 
     implementation group: 'io.vavr', name: 'vavr', version: '0.10.2'

@@ -11,8 +11,8 @@ import java.util.Arrays;
 /**
  * Some tests were deactivated because System Rules can't be used with JUnit5
  */
-public class MainTest {
-    private static final Logger logger = LogManager.getLogger(MainTest.class);
+public class AppTest {
+    private static final Logger logger = LogManager.getLogger(AppTest.class);
 
     private static final String CONFIG_FILE = "config.yml";
 
@@ -26,21 +26,21 @@ public class MainTest {
         logger.info("test_main_help - start");
 
         String[] args = { "-h" };
-        Main.main(args);
+        App.main(args);
     }
 
     public void test_main_commandLineParseErr() throws InterruptedException {
         logger.info("test_main_commandLineParseErr - start");
 
         String[] args = { "" };
-        Main.main(args);
+        App.main(args);
     }
 
     public void test_main_configFilePathErr() throws InterruptedException {
         logger.info("test_main_configFilePathErr - start");
 
         String[] args = { "-c 11@@AABB" };
-        Main.main(args);
+        App.main(args);
     }
 
     public void test_main_configFileFormatErr() throws InterruptedException, URISyntaxException {
@@ -48,7 +48,7 @@ public class MainTest {
 
         String[] args = { "-c", Paths.get(ClassLoader.getSystemResource("hostnamePort.yml").toURI()).toString() };
         logger.info("args: {}", Arrays.toString(args));
-        Main.main(args);
+        App.main(args);
     }
 
     public void test_main() throws InterruptedException, URISyntaxException {
@@ -56,7 +56,7 @@ public class MainTest {
 
         String[] args = { "-c", Paths.get(ClassLoader.getSystemResource(CONFIG_FILE).toURI()).toString() };
         logger.info("args: {}", Arrays.toString(args));
-        Main.main(args);
+        App.main(args);
 
         // server shutdown
     }
