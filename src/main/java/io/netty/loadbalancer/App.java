@@ -55,8 +55,7 @@ public final class App implements Callable<Integer> {
         return Try.of(() -> Paths.get(configFilePath))
                   .flatMap(filePath -> Try.withResources(() -> Files.newInputStream(filePath))
                                           .of(inStream -> new Yaml().loadAs(inStream, ConfigurationProperties.class)))
-                  .onFailure(ex -> System.err
-                          .println("Error while loading the configuration file:" + System.lineSeparator() +
-                                   configFilePath));
+                  .onFailure(ex -> System.err.println("Error while loading the configuration file: " + configFilePath +
+                                                      " - Error message: " + ex.getMessage()));
     }
 }
